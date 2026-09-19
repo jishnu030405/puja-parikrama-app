@@ -43,7 +43,6 @@ The application provides a simple way to discover selected pandals, get directio
 * HTML5
 * CSS3
 * JavaScript
-* Python Flask
 
 ### Backend
 
