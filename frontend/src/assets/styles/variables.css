@@ -1,0 +1,73 @@
+/* ==========================================================================
+   POOJA PARIKRAMA — DESIGN SYSTEM TOKENS
+   Inspired by the vibrant, sacred aesthetic of Durga Puja:
+   Deep Crimson Maroon, Radiant Temple Gold, Sacred Cream & Saffron
+   ========================================================================== */
+
+:root {
+  /* Surface & Backgrounds */
+  --bg-primary: #FAF6EE;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFDF9;
+  --bg-alt: #F3EBDD;
+
+  /* Durga Crimson Maroon (Heritage & Devotion) */
+  --maroon-900: #3E050B;
+  --maroon-800: #5D0A14;
+  --maroon-700: #7B0D1E;
+  --maroon-600: #9E162B;
+  --maroon-500: #C21F39;
+  --maroon-100: #F7E4E7;
+  --maroon-50: #FBF2F3;
+
+  /* Temple Gold (Elegance & Radiance) */
+  --gold-700: #9B7808;
+  --gold-600: #B88E0B;
+  --gold-500: #D4AF37;
+  --gold-400: #E5C358;
+  --gold-300: #F3D97F;
+  --gold-100: #FAF2D2;
+  --gold-50: #FDF9EC;
+
+  /* Festive Saffron & Kumkum */
+  --saffron-600: #D04F00;
+  --saffron-500: #E85D04;
+  --saffron-400: #F48C06;
+  --saffron-100: #FFEBD9;
+
+  /* Typography & Readability */
+  --text-title: #2A090D;
+  --text-primary: #372421;
+  --text-secondary: #655450;
+  --text-muted: #8E7D79;
+  --text-inverse: #FFFFFF;
+
+  /* Borders */
+  --border-subtle: #E8DDCE;
+  --border-card: #EFE6D8;
+  --border-gold: rgba(212, 175, 55, 0.4);
+  --border-gold-focus: #D4AF37;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 2px 8px rgba(62, 5, 11, 0.05);
+  --shadow-md: 0 6px 20px -2px rgba(62, 5, 11, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 36px -6px rgba(62, 5, 11, 0.14), 0 6px 14px -3px rgba(0, 0, 0, 0.05);
+  --shadow-gold-glow: 0 0 30px rgba(212, 175, 55, 0.35);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  /* Typography */
+  --font-display: 'Rozha One', 'Cinzel', serif;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}

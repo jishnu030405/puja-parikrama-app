@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Review - Pujo Parikrama 2026</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff8ef;
+            color: #4a2118;
+        }
+
+        .top-border {
+            height: 7px;
+            background: #8b1e1e;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 550px;
+            margin: 40px auto;
+        }
+
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(80, 30, 10, 0.12);
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 30px;
+            color: #8b1e1e;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* STAR RATING */
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .star {
+            border: none;
+            background: none;
+            font-size: 42px;
+            cursor: pointer;
+            color: #d6d6d6;
+            transition: 0.2s;
+            padding: 0;
+        }
+
+        .star.active {
+            color: #e3a21a;
+        }
+
+        .star:hover {
+            transform: scale(1.12);
+        }
+
+        .rating-text {
+            text-align: center;
+            color: #777;
+            min-height: 20px;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        textarea:focus,
+        input:focus {
+            border-color: #8b1e1e;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: #8b1e1e;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #6f1515;
+        }
+
+        .submit-btn:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #218838;
+        }
+
+        .error {
+            color: #c62828;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        @media (max-width: 500px) {
+
+            .container {
+                width: 94%;
+                margin: 25px auto;
+            }
+
+            .review-card {
+                padding: 22px;
+            }
+
+            .title {
+                font-size: 26px;
+            }
+
+            .star {
+                font-size: 38px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="top-border"></div>
+
+    <div class="container">
+
+        <div class="review-card">
+
+            <h1 class="title">
+                Share Your Experience
+            </h1>
+
+            <p class="subtitle">
+                Help us improve Pujo Parikrama 2026
+            </p>
+
+
+
+            <div class="section">
+
+                <label>
+                    How would you rate the app?
+                </label>
+
+                <div class="stars">
+
+                    <button class="star" data-rating="1">★</button>
+                    <button class="star" data-rating="2">★</button>
+                    <button class="star" data-rating="3">★</button>
+                    <button class="star" data-rating="4">★</button>
+                    <button class="star" data-rating="5">★</button>
+
+                </div>
+
+                <div class="rating-text" id="ratingText">
+                    Select a rating
+                </div>
+
+            </div>
+
+
+            
+
+            <div class="section">
+
+                <label for="review">
+                    Your review
+                </label>
+
+                <textarea
+                    id="review"
+                    placeholder="Tell us what you liked or what we can improve..."
+                ></textarea>
+
+            </div>
+
+
+            
+
+            <div class="section">
+
+                <label for="bestPandal">
+                    Which pandel did you like the most?
+                </label>
+
+                <input
+                    type="text"
+                    id="bestPandal"
+                    placeholder="Enter pandal name"
+                >
+
+            </div>
+
+
+           
+
+            <button
+                class="submit-btn"
+                id="submitBtn"
+                onclick="submitReview()"
+            >
+                Submit Review
+            </button>
+
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+            <div
+                class="user-info"
+                id="userInfo"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+<script>
+
+
+   
+    let selectedRating = 0;
+
+    const stars =
+        document.querySelectorAll(".star");
+
+    const ratingText =
+        document.getElementById("ratingText");
+
+
+    stars.forEach(star => {
+
+        star.addEventListener("click", function () {
+
+            selectedRating =
+                Number(this.dataset.rating);
+
+            updateStars();
+
+        });
+
+    });
+
+
+    function updateStars() {
+
+        stars.forEach(star => {
+
+            const rating =
+                Number(star.dataset.rating);
+
+            if (rating <= selectedRating) {
+
+                star.classList.add("active");
+
+            } else {
+
+                star.classList.remove("active");
+
+            }
+
+        });
+
+
+        const ratingMessages = {
+
+            1: "Poor",
+            2: "Needs improvement",
+            3: "Good",
+            4: "Very good",
+            5: "Excellent!"
+
+        };
+
+        ratingText.textContent =
+            ratingMessages[selectedRating];
+
+    }
+
+
+
+
+    async function submitReview() {
+
+        const review =
+            document.getElementById("review")
+                .value.trim();
+
+        const bestPandal =
+            document.getElementById("bestPandal")
+                .value.trim();
+
+        const message =
+            document.getElementById("message");
+
+        const submitBtn =
+            document.getElementById("submitBtn");
+
+
+      
+
+        if (selectedRating === 0) {
+
+            message.textContent =
+                "Please select a star rating.";
+
+            message.className =
+                "message error";
+
+            return;
+        }
+
+
+        if (!review) {
+
+            message.textContent =
+                "Please write your review.";
+
+            message.className =
+                "message error";
+
+            return;
+        }
+
+
+        if (!bestPandal) {
+
+            message.textContent =
+                "Please enter your favourite pandal.";
+
+            message.className =
+                "message error";
+
+            return;
+        }
+
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "Submitting...";
+
+
+        try {
+
+            const response =
+                await fetch("/review", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        rating: selectedRating,
+
+                        review: review,
+
+                        best_pandal: bestPandal
+
+                    })
+
+                });
+
+
+            const data =
+                await response.json();
+
+
+            if (response.ok) {
+
+                message.textContent =
+                    data.message;
+
+                message.className =
+                    "message success";
+
+
+              
+                document.getElementById("review")
+                    .value = "";
+
+                document.getElementById("bestPandal")
+                    .value = "";
+
+                selectedRating = 0;
+
+                updateStars();
+
+            } else {
+
+                message.textContent =
+                    data.error ||
+                    "Something went wrong.";
+
+                message.className =
+                    "message error";
+
+            }
+
+        } catch (error) {
+
+            message.textContent =
+                "Unable to connect to the server.";
+
+            message.className =
+                "message error";
+
+        }
+
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+            "Submit Review";
+
+    }
+
+</script>
+
+</body>
+</html>
