@@ -227,16 +227,17 @@
             />
 
           </div>
+        </div>
 
 
           <!-- PANDAL GRID -->
-
+          
           <div class="pandal-grid">
 
-            <article
-              v-for="pandal in filteredPandals"
-              :key="pandal.id"
-              class="pandal-card"
+            <article 
+              v-for="pandal in filteredPandals.slice(0, visiblePandalCount)" 
+              :key="pandal.id" 
+              class="pandal-card" 
             >
 
               <div class="card-number">
@@ -274,11 +275,11 @@
 
                 <!-- NAVIGATION -->
 
-                <button
-                  class="text-button"
-                  type="button"
-                  :disabled="activePandalId === pandal.id"
-                  @click="goToPandal(pandal)"
+                <button 
+                  class="text-button" 
+                  type="button" 
+                  :disabled="activePandalId === pandal.id" 
+                  @click="goToPandal(pandal)" 
                 >
                   {{ pandalButtonLabel(pandal) }}
                 </button>
@@ -290,15 +291,58 @@
           </div>
 
 
-          <p
-            v-if="filteredPandals.length === 0"
-            class="empty"
+          <!-- SHOW MORE / SHOW LESS -->
+
+          <div
+            v-if="filteredPandals.length > 6"
+            style="text-align: center; margin-top: 25px;"
           >
-            No predefined pandal found.
+
+            <button
+              type="button"
+              @click="
+                visiblePandalCount < filteredPandals.length
+                  ? visiblePandalCount = Math.min(
+                      visiblePandalCount + 6,
+                      filteredPandals.length
+                    )
+                  : visiblePandalCount = 6
+              "
+              style="
+                padding: 10px 22px;
+                border: 2px solid #8b0000;
+                border-radius: 20px;
+                background: #fff8ed;
+                color: #8b0000;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+              "
+            >
+
+              {{
+                visiblePandalCount < filteredPandals.length
+                  ? '▼ Show More'
+                  : '▲ Show Less'
+              }}
+
+            </button>
+
+          </div>
+
+
+          <!-- NO RESULTS -->
+
+          <p 
+            v-if="filteredPandals.length === 0" 
+            class="empty" 
+          >
+            No predefined pandal found. 
           </p>
+          
 
-        </div>
 
+          
       </section>
 
 
@@ -575,6 +619,7 @@ import {
 
 
 // BASIC STATE
+const visiblePandalCount = ref(6)
 
 const searchQuery = ref('')
 
@@ -1914,8 +1959,8 @@ nav a:hover {
 
 .pandal-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
 .pandal-card {
@@ -2298,100 +2343,469 @@ nav a:hover {
 
 @media (max-width: 700px) {
 
+  /* =========================================
+     GLOBAL MOBILE
+  ========================================= */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
   .container {
     width: min(100% - 24px, 1120px);
-  }
-
-  .brand {
-    font-size: 1.05rem;
-  }
-
-  .hero-copy {
-    min-height: 470px;
-  }
-
-  .hero-image-wrap {
-    min-height: 330px;
-    max-height: 360px;
-  }
-
-  .hero-image {
-    min-height: 330px;
-  }
-
-  .decorated-title h1 {
-    font-size: 3rem;
-  }
-
-  .decorated-title .line {
-    width: 28px;
-  }
-
-  .hero-description {
-    font-size: .84rem;
-  }
-
-  .desktop-only {
-    display: none;
+    margin: 0 auto;
   }
 
   .section {
-    padding: 55px 0;
+    padding: 48px 0;
   }
+
+  /* Prevent long text from creating horizontal scroll */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    overflow-wrap: break-word;
+  }
+
+
+  /* =========================================
+     HEADER / NAVIGATION
+  ========================================= */
+
+  .brand {
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  header {
+    min-height: 58px;
+  }
+
+  nav {
+    max-width: 100%;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+
+  /* =========================================
+     HERO SECTION
+  ========================================= */
+
+  .hero-copy {
+    min-height: 440px;
+    padding: 30px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-image-wrap {
+    min-height: 300px;
+    max-height: 340px;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    min-height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .decorated-title {
+    margin-bottom: 16px;
+  }
+
+  .decorated-title h1 {
+    font-size: 2.55rem;
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .decorated-title .line {
+    width: 24px;
+  }
+
+  .hero-description {
+    font-size: .86rem;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+
+  .hero-btn {
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: .88rem;
+  }
+
+
+  /* =========================================
+     HEADINGS / SECTION TITLES
+  ========================================= */
+
+  .section-title {
+    margin-bottom: 24px;
+  }
+
+  .section-title h2 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .section-title p {
+    font-size: .85rem;
+    line-height: 1.55;
+  }
+
+
+  /* =========================================
+     SEARCH / FILTER AREA
+  ========================================= */
+
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  input,
+  select {
+    min-height: 44px;
+    border-radius: 10px;
+  }
+
+  textarea {
+    border-radius: 12px;
+  }
+
+
+  /* =========================================
+     PANDAL GRID
+  ========================================= */
 
   .pandal-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
+
+  .pandal-card {
+    padding: 16px;
+    min-height: auto;
+    gap: 12px;
+    border-radius: 16px;
+  }
+
+  .card-number {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    font-size: .85rem;
+  }
+
+  .card-content {
+    min-width: 0;
+  }
+
+  .card-content h3 {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin-bottom: 7px;
+  }
+
+  .card-content p {
+    font-size: .84rem;
+    line-height: 1.45;
+    margin-bottom: 9px;
+  }
+
+  .zone {
+    display: inline-block;
+    margin: 2px 3px 5px 0;
+    font-size: .72rem;
+    line-height: 1.3;
+  }
+
+  .text-button {
+    min-height: 36px;
+    padding: 6px 0;
+    font-size: .82rem;
+  }
+
+
+  /* =========================================
+     SHOW MORE BUTTON
+  ========================================= */
+
+  .pandal-grid + div {
+    margin-top: 20px !important;
+  }
+
+  .pandal-grid + div button {
+    min-height: 42px;
+    min-width: 140px;
+    padding: 9px 20px !important;
+    border-radius: 22px !important;
+    font-size: .84rem !important;
+  }
+
+
+  /* =========================================
+     ROUTE PLANNER
+  ========================================= */
 
   .route-start-picker {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .route-start-option {
     padding: 15px 16px;
+    min-height: 55px;
+    border-radius: 14px;
   }
 
   .route-pandal-card {
     padding: 14px;
     gap: 12px;
+    border-radius: 14px;
   }
 
   .route-pandal-rank {
     flex-basis: 38px;
+    width: 38px;
     height: 38px;
     font-size: .9rem;
   }
 
+  .route-pandal-card h3 {
+    font-size: .98rem;
+    line-height: 1.35;
+  }
+
+  .route-pandal-card p {
+    font-size: .82rem;
+    line-height: 1.45;
+  }
+
+  .route-pandal-card .hero-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+
+  /* =========================================
+     LOCATION / ROUTE BUTTONS
+  ========================================= */
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  a {
+    touch-action: manipulation;
+  }
+
+  .hero-btn,
+  .text-button {
+    cursor: pointer;
+  }
+
+
+  /* =========================================
+     TOILET FINDER
+  ========================================= */
+
   .toilet-card {
     flex-direction: column;
     align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+    border-radius: 14px;
   }
 
   .toilet-card .hero-btn {
     width: 100%;
+    min-height: 44px;
   }
 
 
-  /* Footer mobile */
+  /* =========================================
+     REVIEW / FORM AREA
+  ========================================= */
+
+  form {
+    width: 100%;
+  }
+
+  form input,
+  form select,
+  form textarea,
+  form button {
+    width: 100%;
+  }
+
+  form textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+
+  /* =========================================
+     CARDS IN GENERAL
+  ========================================= */
+
+  .card,
+  .feature-card,
+  .review-card {
+    border-radius: 16px;
+  }
+
+
+  /* =========================================
+     COUNTDOWN
+  ========================================= */
+
+  .countdown {
+    width: 100%;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .countdown > div {
+    min-width: 58px;
+    padding: 8px 6px;
+    border-radius: 12px;
+  }
+
+
+  /*
+     IMAGES
+ */
+
+  img {
+    max-width: 100%;
+  }
+
+
+  /* 
+     FOOTER
+ */
 
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 26px;
     padding: 35px 0 28px;
   }
 
   .footer-about p {
     max-width: 100%;
+    font-size: .84rem;
+    line-height: 1.6;
+  }
+
+  .footer-content h3,
+  .footer-content h4 {
+    margin-bottom: 10px;
   }
 
   .footer-bottom .container {
     min-height: auto;
     flex-direction: column;
     justify-content: center;
-    padding: 15px 0;
+    gap: 6px;
+    padding: 15px 12px;
     text-align: center;
   }
 
-}
+  .footer-bottom {
+    font-size: .78rem;
+  }
 
+
+  /* 
+     SMALL MOBILE - PHONES
+   */
+
+  @media (max-width: 420px) {
+
+    .container {
+      width: calc(100% - 18px);
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .hero-copy {
+      min-height: 420px;
+      padding: 25px 14px;
+    }
+
+    .hero-image-wrap {
+      min-height: 280px;
+      max-height: 310px;
+    }
+
+    .hero-image {
+      min-height: 280px;
+    }
+
+    .decorated-title h1 {
+      font-size: 2.25rem;
+    }
+
+    .hero-description {
+      font-size: .82rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.55rem;
+    }
+
+    .pandal-card {
+      padding: 14px;
+    }
+
+    .card-number {
+      width: 39px;
+      height: 39px;
+      min-width: 39px;
+    }
+
+    .card-content h3 {
+      font-size: 1rem;
+    }
+
+    .card-content p {
+      font-size: .8rem;
+    }
+
+    .zone {
+      font-size: .68rem;
+    }
+
+    .route-pandal-card {
+      padding: 12px;
+    }
+
+  }
+
+}
 </style>

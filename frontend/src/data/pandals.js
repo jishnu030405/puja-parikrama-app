@@ -147,6 +147,44 @@ export const initialDurgapurPandals = [
     lng: 87.3532353533825,
     tags: ['Theme - Delhi Akshardham Mandir']
   },
+  {
+    id: 'pandal-17',
+    name: 'Buddha Bihar Sarbojanin',
+    location: 'Bhagat Singh Marg',
+    zone: 'C-Zone',
+    lat: 23.552079302201662, 
+    lng: 87.31106846687624,
+    tags: ['Theme -']
+  },
+  {
+    id: 'pandal-18',
+    name: 'Bharati Sarbajanin',
+    location: 'Bharati More',
+    zone: 'B-Zone',
+    lat: 23.56295846739662,
+    lng:  87.32507032342865, 
+    tags: ['Theme - Red Fort with Laser show']
+  },
+  // {
+  //   id: 'pandal-19',
+  //   name: 'Dhandabag Youth Club',
+  //   location: 'Dhandabag Football Ground',
+  //   zone: 'A-Zone',
+  //   lat: 23.571350627544255,
+  //   lng: 87.27369549334142, 
+  //   tags: ['Theme - Vande Mataram']
+  // },
+  // {
+  //   id: 'pandal-20',
+  //   name: 'Prabhat Sangha ',
+  //   location: 'Agrani Ln, Debinagar, Benachity',
+  //   zone: 'A-Zone',
+  //   lat: 23.58620628304338, 
+  //   lng:  87.269385229357, 
+  //   tags: ['Theme -']
+  // },
+  
+
 
 
 
