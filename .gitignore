@@ -1,15 +1,62 @@
+# Frontend - Vue / Vite
+
 frontend/node_modules/
 frontend/dist/
+
+
+
+# Backend - Python / Flask
+
 
 backend/venv/
 backend/__pycache__/
 backend/**/*.pyc
+backend/**/*.pyo
+
+# Python cache
+**/__pycache__/
+**/*.py[cod]
+
+# SQLite databases
+backend/instance/*.db
+backend/*.db
+
+
+
+# Environment / Secrets
+
 
 .env
 *.env
+.env.*
+!.env.example
+
+
+
+# IDE / Editors
+
 
 .vscode/
 .idea/
 
+
+
+# Operating System
+
+
 .DS_Store
 Thumbs.db
+
+
+
+# Logs
+
+*.log
+
+
+
+# Temporary files
+
+*.tmp
+*.temp
+
