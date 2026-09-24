@@ -28,7 +28,7 @@
           </select>
           <a href="#pandals">Top Pandals</a>
           <a href="#route-planner">Route Planner</a>
-          <a href="https://puja-parikrama-26.onrender.com/review">Review</a>
+          <a href="https://script.google.com/macros/s/AKfycbwlGAR4E6-heIHpudxqFjaPFMkYTld_qpdaMxglHsCi3utYnl6uavlpgDHxSJL5MUJG-A/exec">Review</a>
       
         </nav>
 
@@ -59,7 +59,7 @@
         </a>
 
       <a
-        href="https://puja-parikrama-26.onrender.com/review"
+        href="https://script.google.com/macros/s/AKfycbwlGAR4E6-heIHpudxqFjaPFMkYTld_qpdaMxglHsCi3utYnl6uavlpgDHxSJL5MUJG-A/exec"
         @click="menuOpen = false"
         >
         Review
@@ -581,7 +581,7 @@
             Route Planner
           </a>
           
-          <a href="https://puja-parikrama-26.onrender.com/review">
+          <a href="https://script.google.com/macros/s/AKfycbwlGAR4E6-heIHpudxqFjaPFMkYTld_qpdaMxglHsCi3utYnl6uavlpgDHxSJL5MUJG-A/exec">
             Review
           </a>
 
