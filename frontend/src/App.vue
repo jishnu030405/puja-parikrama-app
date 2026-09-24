@@ -599,6 +599,15 @@
 
             Made For Durgapur only
           </p>
+          <br>
+
+          <p>
+          Contact: 
+          <a href="mailto:pujoparikrama.web@gmail.com">
+            pujoparikrama.web@gmail.com
+            
+          </a>
+        </p>
 
 
         </div>
