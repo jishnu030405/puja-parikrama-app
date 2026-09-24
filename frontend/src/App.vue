@@ -28,7 +28,7 @@
           </select>
           <a href="#pandals">Top Pandals</a>
           <a href="#route-planner">Route Planner</a>
-          <a href="/review">Review</a>
+          <a href="https://puja-parikrama-26.onrender.com/review">Review</a>
       
         </nav>
 
