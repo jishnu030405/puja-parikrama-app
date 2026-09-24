@@ -59,7 +59,7 @@
         </a>
 
       <a
-        href="https://puja-parikrama-26.onrender.com"
+        href="https://puja-parikrama-26.onrender.com/review"
         @click="menuOpen = false"
         >
         Review
@@ -581,7 +581,7 @@
             Route Planner
           </a>
           
-          <a href="https://puja-parikrama-26.onrender.com">
+          <a href="https://puja-parikrama-26.onrender.com/review">
             Review
           </a>
 
