@@ -175,7 +175,5 @@ def review():
 
 
 if __name__ == "__main__":
-
-    # Debug should be OFF for production.
     app.run(debug=False)
 

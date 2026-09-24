@@ -470,47 +470,72 @@
 
 
       <!-- ================= TOILETS ================= -->
+        <section id="facilities" class="section toilet-section">
 
-      <section
-        id="toilets"
-        class="section toilet-section"
-      >
+  <div class="container">
 
-        <div class="container">
+    <div class="facility-grid">
 
-          <div class="toilet-card">
+      <div class="toilet-card">
 
-            <div>
+        <div>
+          <p class="eyebrow">
+            QUICK HELP
+          </p>
 
-              <p class="eyebrow">
-                QUICK HELP
-              </p>
+          <h2>
+            🚻 Toilet Finder
+          </h2>
 
-              <h2>
-                🚻 Toilet Finder
-              </h2>
-
-              <p>
-                Find nearby public toilets using your
-                current location.
-              </p>
-
-            </div>
-
-
-            <button
-              class="hero-btn primary"
-              type="button"
-              @click="findToilets"
-            >
-              Find Nearby Toilets
-            </button>
-
-          </div>
-
+          <p>
+            Find nearby public toilets using your current location.
+          </p>
         </div>
 
-      </section>
+        <button
+          class="hero-btn primary"
+          type="button"
+          @click="findToilets"
+        >
+          Find Nearby Toilets
+        </button>
+
+      </div>
+
+
+      <div class="toilet-card">
+
+        <div>
+          <p class="eyebrow">
+            QUICK HELP
+          </p>
+
+          <h2>
+            🏥 Nearby Hospitals
+          </h2>
+
+          <p>
+            Find nearby hospitals using your current location.
+          </p>
+        </div>
+
+        <button
+          class="hero-btn primary"
+          type="button"
+          @click="findHospitals"
+        >
+          Find Nearby Hospitals
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+      
+      
 
     </main>
 
@@ -1487,6 +1512,61 @@ function findToilets() {
 
 }
 
+// Hospital finder
+function findHospitals() {
+
+  if (!navigator.geolocation) {
+
+    openGoogleMaps(
+      'https://www.google.com/maps/search/?api=1&query=hospitals+near+me'
+    )
+
+    return
+
+  }
+
+
+  navigator.geolocation.getCurrentPosition(
+
+    (position) => {
+
+      const location =
+        `${position.coords.latitude},${position.coords.longitude}`
+
+
+      openGoogleMaps(
+
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          `hospitals near ${location}`
+        )}`
+
+      )
+
+    },
+
+
+    () => {
+
+      openGoogleMaps(
+        'https://www.google.com/maps/search/?api=1&query=hospitals+near+me'
+      )
+
+    },
+
+
+    {
+      enableHighAccuracy: true,
+      timeout: 8000,
+      maximumAge: 60000
+    }
+
+  )
+
+}
+
+
+
+
 
 
 // LIFECYCLE
@@ -1665,13 +1745,29 @@ nav a:hover {
 /* ================= HERO ================= */
 
 .hero {
+  position: relative;
   min-height: 540px;
   display: grid;
   grid-template-columns: 53% 47%;
-  background: #f9e5bd;
   overflow: hidden;
+ 
+  /* Single shared background behind both columns so the image
+     dissolves into it with no visible seam */
+  background:
+    radial-gradient(
+      circle at 32% 45%,
+      rgba(255, 255, 255, 0.4),
+      transparent 55%
+    ),
+    linear-gradient(
+      110deg,
+      #fff4dc 0%,
+      #f9e4bb 45%,
+      #f3cf95 70%,
+      #edc27f 100%
+    );
 }
-
+ 
 .hero-copy {
   position: relative;
   z-index: 2;
@@ -1681,68 +1777,46 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  background:
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(255,255,255,.34),
-      transparent 46%
-    ),
-    linear-gradient(
-      110deg,
-      #fff3d8 0%,
-      #f9e4bb 70%,
-      #efc889 100%
-    );
+  /* no background here — .hero's shared background shows through */
 }
-
-.hero-copy::before,
-.hero-copy::after {
-  content: '✧';
-  position: absolute;
-  color: #d78363;
-  font-size: 3.6rem;
-  opacity: .45;
-}
-
-.hero-copy::before {
-  left: 8px;
-  top: 35px;
-}
-
-.hero-copy::after {
-  left: 22px;
-  bottom: 24px;
-}
-
+ 
 .hero-image-wrap {
   min-height: 540px;
   position: relative;
   overflow: hidden;
+  /* no background here either — lets .hero show through the mask fade */
 }
-
-.hero-image-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-
-  background:
-    linear-gradient(
-      90deg,
-      #efc889 0%,
-      rgba(239,200,137,0) 18%
-    );
-
-  pointer-events: none;
-}
-
+ 
 .hero-image {
   width: 100%;
   height: 100%;
   min-height: 540px;
   object-fit: cover;
   object-position: center;
+  display: block;
+ 
+  /* Top / right / bottom stay hard photo edges — only the LEFT edge
+     dissolves, wide and soft, into the shared .hero background */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.12) 10%,
+    rgba(0, 0, 0, 0.35) 18%,
+    rgba(0, 0, 0, 0.65) 26%,
+    rgba(0, 0, 0, 0.88) 33%,
+    #000 42%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.12) 10%,
+    rgba(0, 0, 0, 0.35) 18%,
+    rgba(0, 0, 0, 0.65) 26%,
+    rgba(0, 0, 0, 0.88) 33%,
+    #000 42%
+  );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 
@@ -1966,10 +2040,10 @@ nav a:hover {
 .pandal-card {
   display: flex;
   gap: 15px;
-  padding: 19px;
+  padding: 15px;
   background: #fff;
-  border: 1px solid #eadcc5;
-  border-radius: 12px;
+  border: 2px solid #eadcc5;
+  border-radius: 20px;
   box-shadow: 0 6px 18px rgba(80, 30, 20, .05);
 }
 
@@ -2183,7 +2257,11 @@ nav a:hover {
 .toilet-section {
   padding-top: 38px;
 }
-
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
 .toilet-card {
   display: flex;
   align-items: center;
@@ -2643,6 +2721,11 @@ nav a:hover {
     width: 100%;
     min-height: 44px;
   }
+  
+  .facility-grid {
+    grid-template-columns: 1fr;
+  }
+
 
 
   /* =========================================

@@ -13,11 +13,11 @@ export const initialDurgapurPandals = [
   },
   {
     id: 'pandal-2',
-    name: 'Nabaroon Club Sarbojonin Durga Puja',
+    name: 'Nabaroon Club Bhiringi Sarbojonin',
     location: 'GT Road, Bhiringi',
     zone: 'A-Zone',
-    lat: 23.548773946504355,
-    lng: 87.2697440382496,
+    lat: 23.54970942762894, 
+    lng: 87.27072792993091,
     tags: ['Theme - Phire Dhekha']
   },
   {
