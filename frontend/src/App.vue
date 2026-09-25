@@ -15,13 +15,28 @@
           />
 
           <span>Pujo Parikrama 2026</span>
+          
+        <button class="dhak-button" @click="playDhak">
+        <img src="/dhak-img.png" alt="Play Dhak">
+        </button>
+
         </a>
+
+          
+
+
+         
+
+
+
+
+
 
         <nav>
           <select 
             class="form-select"
             aria-label="Choose City"
-            style="width: 150px; border: 2px solid #8b0000; border-radius: 14px; padding: 2px 20px; font-size: 16px; background-color: #fff8ed; color: #5a1a1a; outline:none;box-shadow: none;"
+            style="width: 150px; border: 2px solid #8b0000; border-radius: 14px; padding: 2px 20px; font-size: 16px; background-color: #fff8ed; color: #5a1a1a; outline:none;box-shadow: none;cursor:pointer;"
           >
             <option selected>Choose City</option>
             <option value="1">Durgapur</option>
@@ -649,6 +664,8 @@ import {
 import {
   initialDurgapurPandals
 } from './data/pandals.js'
+
+
 
 
 
@@ -1661,6 +1678,25 @@ onUnmounted(() => {
 
 })
 
+
+const dhakAudio = new Audio('/dhak-sound.mp3')
+
+let dhakTimer = null
+
+function playDhak() {
+  dhakAudio.pause()
+  dhakAudio.currentTime = 0
+  dhakAudio.play()
+
+  clearTimeout(dhakTimer)
+
+  dhakTimer = setTimeout(() => {
+    dhakAudio.pause()
+    dhakAudio.currentTime = 0
+  }, 15000)
+}
+
+
 </script>
 
 
@@ -1749,7 +1785,30 @@ nav a:hover {
 .mobile-menu {
   display: none;
 }
+.dhak-button {
+  border: none;
+  background: transparent;
+  padding:0;
+  cursor: pointer;
+  margin-left: -22px;
+  margin-top: -12px;
 
+}
+
+.dhak-button img {
+  width: 70px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.dhak-button:hover img {
+  transform: scale(1.05);
+}
+
+.dhak-button:active img {
+  transform: scale(0.95);
+}
 
 /* ================= HERO ================= */
 
