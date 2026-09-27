@@ -635,11 +635,11 @@
         <div class="container">
 
           <span>
-            © 2026 Pujo Parikrama • Designed & Developed by Jishnujit Mete
+            © 2026 Pujo Parikrama • All Rights Reserved
           </span>
 
           <span>
-            Made with devotion for Maa Durga ❤️
+            Made with devotion for Maa Durga By Jishnujit Mete ❤️
           </span>
 
         </div>
@@ -653,6 +653,7 @@
 
 
 <script setup>
+
 
 import {
   computed,
