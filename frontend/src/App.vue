@@ -44,7 +44,7 @@
           <a href="#pandals">Top Pandals</a>
           <a href="#route-planner">Route Planner</a>
           <a href="https://script.google.com/macros/s/AKfycbwlGAR4E6-heIHpudxqFjaPFMkYTld_qpdaMxglHsCi3utYnl6uavlpgDHxSJL5MUJG-A/exec">Review</a>
-      
+        
         </nav>
 
         <button
@@ -56,31 +56,42 @@
         </button>
 
       </div>
+              <div v-if="menuOpen" class="mobile-menu">
 
-      <div v-if="menuOpen" class="mobile-menu">
+          <a href="#pandals" @click="menuOpen = false">
+            Top Pandals
+          </a>
 
-        <a
-          href="#pandals"
-          @click="menuOpen = false"
-        >
-          Top Pandals
-        </a>
+          <a href="#route-planner" @click="menuOpen = false">
+            Route Planner
+          </a>
 
-        <a
-          href="#route-planner"
-          @click="menuOpen = false"
-        >
-          Route Planner
-        </a>
+          <a
+            href="https://script.google.com/macros/s/AKfycbwlGAR4E6-heIHpudxqFjaPFMkYTld_qpdaMxglHsCi3utYnl6uavlpgDHxSJL5MUJG-A/exec"
+            @click="menuOpen = false"
+          >
+            Review
+          </a>
+          
+          <div style="display:inline-flex; align-items:center; width:120px; height:30px; position:relative;">
+          <select
+            aria-label="Choose City"
+            style="appearance:none; -webkit-appearance:none; width:100%; height:30px; border:none; background:transparent; color:#6a2b24; font:600 0.9rem Georgia,serif; outline:none; padding:0; margin:0; cursor:pointer;"
+          >
+            <option selected>Choose City</option>
+            <option value="1">Durgapur</option>
+          </select>
 
-      <a
-        href="https://script.google.com/macros/s/AKfycbwlGAR4E6-heIHpudxqFjaPFMkYTld_qpdaMxglHsCi3utYnl6uavlpgDHxSJL5MUJG-A/exec"
-        @click="menuOpen = false"
-        >
-        Review
-    </a>
+          <span style="position:absolute; left:90px; pointer-events:none; color:#6a2b24; font-size:13px;">
+            ▾
+          </span>
+        </div>
+                  
 
-      </div>
+                  
+                </div>
+
+      
     </header>
 
 
@@ -119,8 +130,8 @@
 
 
           <p class="hero-description">
-            Discover All Durgapur Durga Pujo pandels,
-            explore the best pandels,<br
+            Discover All Durgapur Durga Pujo Pandels,
+            explore the best pandels<br
               class="desktop-only"
             />
             and navigate directly from your location.
@@ -215,19 +226,14 @@
           <div class="section-heading">
 
             <p class="eyebrow">
-              DURGAPUR DURGA PUJO 2026
+              দুর্গাপুর দুর্গাপুজো ২০২৬
             </p>
 
             <h2>Top Pandels</h2>
-
-            <p>
-              Explore Durgapur Durga Pujo pandels
-              and navigate directly from your
-              current location.
-            </p>
+            <p style="text-align:center;font-size:13px;color:#7a4b20;margin:12px 0;opacity:0.85;">For the best viewing experience, switch to Desktop Site.</p>
 
           </div>
-          <p style="text-align:center;font-size:13px;color:#7a4b20;margin:12px 0;opacity:0.85;">For the best viewing experience, switch to Desktop Site.</p>
+        
 
           <!-- SEARCH -->
 
@@ -639,7 +645,7 @@
           </span>
 
           <span>
-            Made with devotion for Maa Durga By Jishnujit Mete ❤️
+            Made with devotion for Maa Durga By Jishnujit Mete
           </span>
 
         </div>
@@ -1791,7 +1797,7 @@ nav a:hover {
   background: transparent;
   padding:0;
   cursor: pointer;
-  margin-left: -22px;
+  margin-left: -10px;
   margin-top: -12px;
 
 }
@@ -1810,6 +1816,9 @@ nav a:hover {
 .dhak-button:active img {
   transform: scale(0.95);
 }
+
+
+
 
 /* ================= HERO ================= */
 
@@ -2546,7 +2555,6 @@ nav a:hover {
   .desktop-only {
     display: none !important;
   }
-
 
   /* =========================================
      HERO SECTION
