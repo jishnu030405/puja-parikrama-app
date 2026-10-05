@@ -15,10 +15,10 @@
           />
 
           <span>Pujo Parikrama 2026</span>
-          
-        <button class="dhak-button" @click="playDhak">
-        <img src="/dhak-img.png" alt="Play Dhak">
+          <button class="dhak-button" @click="playDhak">
+          <img src="/dhak-img.png" alt="Play Dhak">
         </button>
+      
 
         </a>
 
@@ -1792,34 +1792,51 @@ nav a:hover {
 .mobile-menu {
   display: none;
 }
+
 .dhak-button {
   border: none;
   background: transparent;
-  padding:0;
   cursor: pointer;
-  margin-left: -10px;
-  margin-top: -12px;
-
+  padding: 0;
+  position: relative;
+  top: -3px;
 }
 
 .dhak-button img {
-  width: 70px;
+  width: 50px;
   height: 50px;
   object-fit: contain;
-  transition: transform 0.2s ease;
+  position: relative;
+  left: -9px;
+
+  animation: dhakVibrate 2s ease-in-out infinite;
 }
 
-.dhak-button:hover img {
-  transform: scale(1.05);
+@keyframes dhakVibrate {
+  0%, 88%, 100% {
+    transform: rotate(0deg);
+  }
+
+  90% {
+    transform: rotate(-5deg);
+  }
+
+  92% {
+    transform: rotate(5deg);
+  }
+
+  94% {
+    transform: rotate(-4deg);
+  }
+
+  96% {
+    transform: rotate(3deg);
+  }
+
+  98% {
+    transform: rotate(0deg);
+  }
 }
-
-.dhak-button:active img {
-  transform: scale(0.95);
-}
-
-
-
-
 /* ================= HERO ================= */
 
 .hero {
