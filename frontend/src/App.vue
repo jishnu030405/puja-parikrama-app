@@ -143,7 +143,7 @@
 
           <div class="countdown-section">
 
-            <div class="countdown-title">
+          <div class="countdown-title">
              {{ pujaDay }}
             </div>
 
@@ -1708,6 +1708,7 @@ function playDhak() {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Galada&display=swap');
 
 :global(*) {
   box-sizing: border-box;
@@ -1973,8 +1974,15 @@ nav a:hover {
 
 .countdown-title {
   color: #9f0d18;
-  font: 700 1.05rem Georgia, serif;
+  font: 700 1.05rem ;
   margin-bottom: 7px;
+  font-size: 30px;
+  font-family: 'Galada', cursive;
+
+
+
+ 
+
 }
 
 .countdown {
